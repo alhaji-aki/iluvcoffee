@@ -20,7 +20,8 @@ export class CoffeesController {
 
   @Public()
   @Get()
-  index(@Query() query: PaginationQueryDto) {
+  async index(@Query() query: PaginationQueryDto) {
+    await new Promise((resolve) => setTimeout(resolve, 5000));
     return this.coffeesService.index(query);
   }
 
