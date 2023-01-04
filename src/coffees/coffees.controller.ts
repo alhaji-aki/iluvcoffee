@@ -22,7 +22,6 @@ export class CoffeesController {
   @Public()
   @Get()
   async index(@Query() query: PaginationQueryDto) {
-    await new Promise((resolve) => setTimeout(resolve, 5000));
     return this.coffeesService.index(query);
   }
 
@@ -33,8 +32,6 @@ export class CoffeesController {
 
   @Get(':id')
   show(@Param('id', ParseIntPipe) id: string) {
-    console.log(id);
-
     return this.coffeesService.show(id);
   }
 
