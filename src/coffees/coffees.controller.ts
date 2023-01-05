@@ -29,8 +29,6 @@ export class CoffeesController {
     @Protocol('https') protocol: string,
     @Query() query: PaginationQueryDto,
   ) {
-    console.log(protocol);
-
     return this.coffeesService.index(query);
   }
 

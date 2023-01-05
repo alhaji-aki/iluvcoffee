@@ -12,7 +12,7 @@ import appConfig from './config/app.config';
   imports: [
     TypeOrmModule.forRootAsync({
       useFactory: () => ({
-        type: 'mysql',
+        type: 'postgres',
         host: process.env.DB_HOST,
         port: +process.env.DB_PORT,
         database: process.env.DB_DATABASE,
