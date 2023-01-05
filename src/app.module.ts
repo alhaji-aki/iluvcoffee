@@ -2,24 +2,17 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CoffeesModule } from './coffees/coffees.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { CoffeeRatingModule } from './coffee-rating/coffee-rating.module';
 import { ConfigModule } from '@nestjs/config';
 import { CommonModule } from './common/common.module';
 import appConfig from './config/app.config';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
-    TypeOrmModule.forRootAsync({
+    MongooseModule.forRootAsync({
       useFactory: () => ({
-        type: 'postgres',
-        host: process.env.DB_HOST,
-        port: +process.env.DB_PORT,
-        database: process.env.DB_DATABASE,
-        username: process.env.DB_USERNAME,
-        password: process.env.DB_PASSWORD,
-        autoLoadEntities: true,
-        synchronize: true,
+        uri: process.env.DB_URL,
       }),
     }),
     ConfigModule.forRoot({

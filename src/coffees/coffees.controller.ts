@@ -13,7 +13,6 @@ import { CreateCoffeeDto } from './dtos/create-coffee.dto';
 import { UpdateCoffeeDto } from './dtos/update-coffee.dto';
 import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 import { Public } from '../common/decorators/public.decorator';
-import { ParseIntPipe } from '../common/pipes/parse-int.pipe';
 import { Protocol } from '../common/decorators/protocol.decorator';
 import { ApiForbiddenResponse, ApiTags } from '@nestjs/swagger';
 
@@ -38,7 +37,7 @@ export class CoffeesController {
   }
 
   @Get(':id')
-  show(@Param('id', ParseIntPipe) id: string) {
+  show(@Param('id') id: string) {
     return this.coffeesService.show(id);
   }
 
